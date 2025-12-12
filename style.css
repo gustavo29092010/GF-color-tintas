@@ -1,0 +1,631 @@
+/* ==================================== */
+/* 0. Variáveis CSS e Reset Básico */
+/* ==================================== */
+
+:root {
+    /* Cores da Marca (Brand Colors) */
+    --color-primary: #4070a8;       /* Azul da Marca */
+    --color-primary-dark: #2a5a92;
+    --color-secondary: #ffc400;     /* Amarelo/Dourado (Alto Contraste CTA) */
+    --color-text: #333333;
+    --color-text-light: #666666;
+    --color-background: #ffffff;
+    --color-light-gray: #f4f4f4;
+    --color-error: #c74e50;
+
+    /* Tipografia */
+    --font-family-sans: 'Arial', sans-serif;
+
+    /* Spacing */
+    --spacing-unit: 8px;
+    --container-width: 1200px;
+
+    /* Sombra e Borda */
+    --shadow-light: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --border-radius: 6px;
+}
+
+/* Reset Simples */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family-sans);
+    line-height: 1.6;
+    color: var(--color-text);
+    background-color: var(--color-background);
+    padding-top: 70px; /* Espaço para o header fixo */
+}
+
+/* Container de Conteúdo */
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-unit) * 3; /* 24px */
+}
+
+/* Seções Padrão */
+section {
+    padding: 80px 0;
+}
+
+h2 {
+    text-align: center;
+    color: var(--color-primary-dark);
+    margin-bottom: 40px;
+    font-size: 2.2em;
+}
+
+/* Botão CTA Padrão */
+.cta-button {
+    background-color: var(--color-secondary);
+    color: var(--color-text);
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: var(--border-radius);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.cta-button:hover {
+    background-color: #ffda5a;
+    transform: translateY(-2px);
+}
+
+/* ==================================== */
+/* 1. Cabeçalho (Header) */
+/* ==================================== */
+
+#main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--color-background);
+    box-shadow: var(--shadow-light);
+    z-index: 1000;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    padding: var(--spacing-unit) * 2 0;
+}
+
+/* Animação sutil de scroll (via JS, mas estilos iniciais aqui) */
+#main-header.scrolled {
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo h1 {
+    color: var(--color-primary);
+    font-size: 1.8em;
+    margin: 0;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: var(--color-text);
+    margin-left: var(--spacing-unit) * 3;
+    padding: 5px 0;
+    position: relative;
+    transition: color 0.2s ease;
+}
+
+.main-nav a:hover {
+    color: var(--color-primary);
+}
+
+/* Esconder navegação em mobile por padrão */
+.main-nav {
+    display: none;
+}
+
+.cta-button {
+    font-size: 0.9em;
+}
+
+/* Desktop Navigation (Acima de 768px) */
+@media (min-width: 768px) {
+    .main-nav {
+        display: block;
+    }
+}
+
+
+/* ==================================== */
+/* 2. Produtos e Catálogo (Grid/Flex) */
+/* ==================================== */
+
+.product-layout {
+    display: flex;
+    flex-direction: column; /* Mobile: sidebar abaixo dos produtos */
+    gap: 40px;
+}
+
+/* Barra Lateral de Filtros */
+.sidebar-filters {
+    background-color: var(--color-light-gray);
+    padding: 20px;
+    border-radius: var(--border-radius);
+}
+
+.sidebar-filters h3 {
+    color: var(--color-primary-dark);
+    margin-bottom: 20px;
+}
+
+.filter-group {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.filter-group h4 {
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+.filter-group label {
+    display: block;
+    cursor: pointer;
+    margin-bottom: 5px;
+    font-size: 0.95em;
+}
+
+.filter-group input[type="checkbox"] {
+    margin-right: 8px;
+    accent-color: var(--color-primary);
+}
+
+/* Lista de Produtos (Grid) */
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.product-card {
+    background-color: var(--color-background);
+    border: 1px solid #e0e0e0;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-light);
+    text-align: center;
+    padding-bottom: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.product-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+.product-card h3 {
+    color: var(--color-primary-dark);
+    font-size: 1.3em;
+    margin: 10px 15px 5px;
+}
+
+.product-card .brand {
+    font-size: 0.9em;
+    color: var(--color-text-light);
+    margin-bottom: 10px;
+}
+
+.product-card .price {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: var(--color-error);
+    margin-bottom: 15px;
+}
+
+.product-card .add-to-cart-btn {
+    background-color: var(--color-primary);
+    color: var(--color-background);
+    padding: 10px 25px;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.product-card .add-to-cart-btn:hover {
+    background-color: var(--color-primary-dark);
+}
+
+/* Desktop Layout (Acima de 992px) */
+@media (min-width: 992px) {
+    .product-layout {
+        flex-direction: row;
+    }
+    .sidebar-filters {
+        flex: 0 0 250px; /* Largura fixa para a sidebar */
+        position: sticky;
+        top: 100px;
+        height: fit-content;
+    }
+    .product-list {
+        flex: 1;
+        /* Grid em 3 colunas para desktop */
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Estilo para produto oculto pelo JS */
+.product-card.hidden {
+    display: none;
+}
+
+/* Calculadora de Tinta */
+.product-detail-sim {
+    background-color: var(--color-light-gray);
+    padding: 40px;
+    text-align: center;
+    border-radius: var(--border-radius);
+}
+
+.calculator-box {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.inputs-group {
+    display: flex;
+    flex-direction: column;
+    min-width: 150px;
+}
+
+.inputs-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    text-align: left;
+}
+
+.inputs-group input, .inputs-group select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius);
+}
+
+#calculate-btn {
+    align-self: flex-end;
+}
+
+.result-box {
+    width: 100%;
+    margin-top: 20px;
+    padding: 15px;
+    background-color: var(--color-background);
+    border-left: 5px solid var(--color-primary);
+    text-align: left;
+    border-radius: var(--border-radius);
+}
+
+
+/* ==================================== */
+/* 3. Paleta de Cores (Inspiração) */
+/* ==================================== */
+
+.color-visualizer-section {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+}
+
+.color-visualizer-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.color-visualizer-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+#color-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.5; /* Opacidade para simular cor na parede */
+    pointer-events: none; /* Permite interagir com a imagem por baixo, se necessário */
+    transition: background-color 0.3s ease;
+}
+
+.color-selector-panel {
+    text-align: center;
+}
+
+#color-picker {
+    width: 80px;
+    height: 80px;
+    border: none;
+    padding: 0;
+    margin-top: 10px;
+    cursor: pointer;
+    background: none;
+}
+
+.color-suggestion-chips {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.color-chip {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: var(--shadow-light);
+    border: 2px solid var(--color-background);
+    transition: transform 0.2s;
+}
+
+.color-chip:hover {
+    transform: scale(1.1);
+    border-color: var(--color-primary);
+}
+
+@media (min-width: 768px) {
+    .color-visualizer-section {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+    .color-visualizer-container {
+        flex: 1;
+    }
+    .color-selector-panel {
+        flex: 0 0 200px;
+        align-self: center;
+    }
+}
+
+
+/* ==================================== */
+/* 4. Dicas e Tutoriais (Blog) */
+/* ==================================== */
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.blog-card {
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-light);
+    transition: box-shadow 0.3s ease;
+    background-color: var(--color-background);
+}
+
+.blog-card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.blog-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.blog-card h4 {
+    color: var(--color-primary-dark);
+    margin: 15px;
+    font-size: 1.2em;
+}
+
+.blog-card p {
+    margin: 0 15px 20px;
+    color: var(--color-text-light);
+    font-size: 0.95em;
+}
+
+
+/* ==================================== */
+/* 6. Sobre Nós (Institucional) */
+/* ==================================== */
+
+.about-section {
+    background-color: var(--color-light-gray);
+}
+
+.about-grid {
+    display: grid;
+    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.about-grid h3 {
+    color: var(--color-primary);
+    margin-bottom: 10px;
+    font-size: 1.5em;
+}
+
+.about-grid ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.about-grid ul li {
+    margin-bottom: 10px;
+}
+
+.about-grid ul li i {
+    color: #4CAF50; /* Cor verde para checkmark */
+    margin-right: 8px;
+}
+
+
+/* ==================================== */
+/* 5. Contato e Localização */
+/* ==================================== */
+
+.contact-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+@media (min-width: 768px) {
+    .contact-grid {
+        flex-direction: row;
+    }
+    .contact-form {
+        flex: 1;
+    }
+    .location-info {
+        flex: 1;
+    }
+}
+
+.contact-form {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+}
+
+.contact-form h3 {
+    color: var(--color-primary-dark);
+    margin-bottom: 20px;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius);
+    font-family: var(--font-family-sans);
+}
+
+.contact-form button {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.map-container {
+    margin-top: 20px;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+.location-info h3 {
+    color: var(--color-primary);
+    margin-bottom: 10px;
+}
+
+/* WhatsApp Flutuante */
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 40px;
+    right: 40px;
+    background-color: #25d366; /* Cor do WhatsApp */
+    color: var(--color-background);
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    line-height: 60px;
+    z-index: 100;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+}
+
+
+/* ==================================== */
+/* 7. Rodapé (Footer) */
+/* ==================================== */
+
+footer {
+    background-color: var(--color-primary-dark);
+    color: var(--color-background);
+    padding-top: 40px;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: space-between;
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-section {
+    min-width: 150px;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-section h4 {
+    color: var(--color-secondary);
+    margin-bottom: 15px;
+    font-size: 1.1em;
+}
+
+.footer-section a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    margin-bottom: 8px;
+    transition: color 0.2s;
+}
+
+.footer-section a:hover {
+    color: var(--color-secondary);
+}
+
+.social-icons a {
+    font-size: 1.5em;
+    margin-right: 15px;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.9em;
+    color: rgba(255, 255, 255, 0.6);
+}

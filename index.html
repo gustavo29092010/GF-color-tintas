@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎨 PaintPro - Sua Loja de Tintas e Cores</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <header id="main-header">
+        <div class="container header-content">
+            <div class="logo">
+                <h1>PaintPro</h1>
+            </div>
+            <nav class="main-nav">
+                <a href="#home">Home</a>
+                <a href="#produtos">Produtos</a>
+                <a href="#inspiracao">Inspiração</a>
+                <a href="#blog">Blog</a>
+                <a href="#contato">Contato</a>
+                <a href="#sobre">Sobre Nós</a>
+            </nav>
+            <a href="#produtos" class="cta-button">Compre Agora!</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="produtos" class="product-catalog container">
+            <h2>Nossos Produtos em Destaque</h2>
+            
+            <div class="product-layout">
+                <aside class="sidebar-filters">
+                    <h3>🔍 Filtrar Tintas</h3>
+                    <div class="filter-group">
+                        <h4>Tipo de Tinta</h4>
+                        <label><input type="checkbox" data-filter="tipo" value="acrilica"> Acrílica</label>
+                        <label><input type="checkbox" data-filter="tipo" value="latex"> Látex</label>
+                        <label><input type="checkbox" data-filter="tipo" value="epoxi"> Epóxi</label>
+                        <label><input type="checkbox" data-filter="tipo" value="esmalte"> Esmalte</label>
+                    </div>
+                    <div class="filter-group">
+                        <h4>Acabamento</h4>
+                        <label><input type="checkbox" data-filter="acabamento" value="fosco"> Fosco</label>
+                        <label><input type="checkbox" data-filter="acabamento" value="semibrilho"> Semibrilho</label>
+                        <label><input type="checkbox" data-filter="acabamento" value="brilhante"> Brilhante</label>
+                        <label><input type="checkbox" data-filter="acabamento" value="acetinado"> Acetinado</label>
+                    </div>
+                    <div class="filter-group">
+                        <h4>Uso</h4>
+                        <label><input type="checkbox" data-filter="uso" value="interno"> Interno</label>
+                        <label><input type="checkbox" data-filter="uso" value="externo"> Externo</label>
+                        <label><input type="checkbox" data-filter="uso" value="madeira"> Madeira</label>
+                        <label><input type="checkbox" data-filter="uso" value="metal"> Metal</label>
+                        <label><input type="checkbox" data-filter="uso" value="piso"> Piso</label>
+                    </div>
+                    <div class="filter-group">
+                        <h4>Marca</h4>
+                        <label><input type="checkbox" data-filter="marca" value="maxcolor"> MaxColor</label>
+                        <label><input type="checkbox" data-filter="marca" value="premiumplus"> PremiumPlus</label>
+                        <label><input type="checkbox" data-filter="marca" value="ecofresh"> EcoFresh</label>
+                    </div>
+                </aside>
+                
+                <section class="product-list" id="product-list-container">
+                    <article class="product-card" 
+                        data-tipo="acrilica" 
+                        data-acabamento="fosco" 
+                        data-uso="interno" 
+                        data-marca="maxcolor">
+                        <img src="https://via.placeholder.com/300x200/4070a8/FFFFFF?text=Tinta+Acrílica" alt="Tinta Acrílica Fosca MaxColor">
+                        <h3>Tinta Acrílica Fosca</h3>
+                        <p class="brand">MaxColor</p>
+                        <p class="price">R$ 189,90</p>
+                        <button class="add-to-cart-btn">Adicionar ao Carrinho</button>
+                    </article>
+
+                     <article class="product-card" 
+                        data-tipo="latex" 
+                        data-acabamento="acetinado" 
+                        data-uso="externo" 
+                        data-marca="premiumplus">
+                        <img src="https://via.placeholder.com/300x200/8c70a8/FFFFFF?text=Tinta+Látex" alt="Tinta Látex Acetinada PremiumPlus">
+                        <h3>Tinta Látex Acetinada</h3>
+                        <p class="brand">PremiumPlus</p>
+                        <p class="price">R$ 259,90</p>
+                        <button class="add-to-cart-btn">Adicionar ao Carrinho</button>
+                    </article>
+                    
+                    <article class="product-card" 
+                        data-tipo="epoxi" 
+                        data-acabamento="brilhante" 
+                        data-uso="piso" 
+                        data-marca="ecofresh">
+                        <img src="https://via.placeholder.com/300x200/c74e50/FFFFFF?text=Tinta+Epóxi" alt="Tinta Epóxi Brilhante EcoFresh">
+                        <h3>Tinta Epóxi Brilhante</h3>
+                        <p class="brand">EcoFresh</p>
+                        <p class="price">R$ 319,90</p>
+                        <button class="add-to-cart-btn">Adicionar ao Carrinho</button>
+                    </article>
+
+                </section>
+            </div>
+        </section>
+
+        <section id="detalhe-produto" class="product-detail-sim container">
+            <h3>Calculadora de Tinta Inteligente</h3>
+            <p>Descubra a quantidade exata de tinta que você precisa para a sua área.</p>
+
+            <div class="calculator-box">
+                <div class="inputs-group">
+                    <label for="wall-width">Largura da Parede (m):</label>
+                    <input type="number" id="wall-width" min="0.1" value="3" step="0.1">
+                </div>
+                <div class="inputs-group">
+                    <label for="wall-height">Altura da Parede (m):</label>
+                    <input type="number" id="wall-height" min="0.1" value="2.5" step="0.1">
+                </div>
+                <div class="inputs-group">
+                    <label for="coats">Número de Demãos:</label>
+                    <select id="coats">
+                        <option value="1">1 Demão</option>
+                        <option value="2" selected>2 Demãos</option>
+                        <option value="3">3 Demãos</option>
+                    </select>
+                </div>
+                <button id="calculate-btn">Calcular Tinta Necessária</button>
+                <div id="calculation-result" class="result-box">
+                    A área total é de **7.5 m²**.
+                    <p>Você precisará de aproximadamente **1.5 L** de tinta.</p>
+                </div>
+            </div>
+            
+        </section>
+
+        <section id="inspiracao" class="color-inspiration container">
+            <h2>Inspiração: Encontre a Cor Perfeita</h2>
+            <div class="color-visualizer-section">
+                <div class="color-visualizer-container">
+                    <img src="https://via.placeholder.com/800x450/cccccc/333333?text=Ambiente+Simulado" alt="Ambiente para visualização de cores" id="room-image">
+                    <div id="color-overlay" style="background-color: #4070a8;"></div>
+                </div>
+                
+                <div class="color-selector-panel">
+                    <h4>Selecione uma Cor</h4>
+                    <input type="color" id="color-picker" value="#4070a8">
+                    <div class="color-suggestion-chips">
+                        <div class="color-chip" style="background-color: #4CAF50;" data-color="#4CAF50"></div>
+                        <div class="color-chip" style="background-color: #FFC107;" data-color="#FFC107"></div>
+                        <div class="color-chip" style="background-color: #E91E63;" data-color="#E91E63"></div>
+                        <div class="color-chip" style="background-color: #9E9E9E;" data-color="#9E9E9E"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-block">
+                <h3>Tendências e Combinações</h3>
+                <p>Explore as cores do ano e as harmonias que transformam ambientes.</p>
+            </div>
+        </section>
+
+        <section id="blog" class="blog-section container">
+            <h2>Dicas e Tutoriais</h2>
+            <div class="blog-grid">
+                <article class="blog-card">
+                    <img src="https://via.placeholder.com/400x250?text=Guia+de+Aplicação" alt="Imagem do artigo Guia de Aplicação">
+                    <h4>Guia de Aplicação: Como pintar uma parede nova</h4>
+                    <p>Passo a passo detalhado para um acabamento profissional sem complicação.</p>
+                </article>
+                <article class="blog-card">
+                    <img src="https://via.placeholder.com/400x250?text=Solução+de+Problemas" alt="Imagem do artigo Solução de Problemas">
+                    <h4>Solução de Problemas: Como evitar bolhas na pintura</h4>
+                    <p>Descubra as causas e soluções para problemas comuns que afetam a durabilidade.</p>
+                </article>
+                <article class="blog-card">
+                    <img src="https://via.placeholder.com/400x250?text=Cores+que+acalmam" alt="Imagem do artigo Cores que acalmam">
+                    <h4>Psicologia das Cores: Tons que acalmam o ambiente</h4>
+                    <p>Use o poder das cores para criar um refúgio de paz na sua casa.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="sobre" class="about-section container">
+            <h2>Sobre a PaintPro</h2>
+            <div class="about-grid">
+                <div>
+                    <h3>Nossa Missão</h3>
+                    <p>Oferecer as melhores soluções em tintas com tecnologia e sustentabilidade, inspirando transformações em cada lar e projeto.</p>
+                </div>
+                <div>
+                    <h3>Nossos Valores</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Inovação e Qualidade</li>
+                        <li><i class="fas fa-check-circle"></i> Foco no Cliente e UX</li>
+                        <li><i class="fas fa-check-circle"></i> Sustentabilidade Ambiental</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Diferenciais</h3>
+                    <p><strong>Máquina de Cores de Alta Precisão:</strong> Garantimos a cor exata que você sonhou. Nossos consultores especializados estão prontos para auxiliar em todas as etapas do seu projeto.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contato" class="contact-location container">
+            <h2>Fale Conosco e Localização</h2>
+            <div class="contact-grid">
+                <form class="contact-form">
+                    <h3>Envie sua Mensagem</h3>
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" name="nome" required>
+
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="assunto">Assunto:</label>
+                    <input type="text" id="assunto" name="assunto">
+
+                    <label for="mensagem">Mensagem:</label>
+                    <textarea id="mensagem" name="mensagem" rows="4" required></textarea>
+
+                    <button type="submit" class="cta-button">Enviar Mensagem</button>
+                </form>
+
+                <div class="location-info">
+                    <h3>Nossa Loja</h3>
+                    <p>Rua da Pintura, 123 - Centro, São Paulo - SP</p>
+                    <p><strong>Horário de Funcionamento:</strong></p>
+                    <p>Seg. a Sex.: 8h às 18h | Sáb.: 9h às 13h</p>
+
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.067300067645!2d-46.65759908538356!3d-23.56708688468758!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59a3c8e3100b%3A0xc0672667d01878c7!2sAv.%20Paulista%20S%2FA%2C%20Bela%20Vista%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1638202422778!5m2!1spt-BR!2sbr" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h4>Navegação Principal</h4>
+                <a href="#home">Home</a>
+                <a href="#produtos">Produtos</a>
+                <a href="#inspiracao">Inspiração</a>
+                <a href="#blog">Blog</a>
+            </div>
+            <div class="footer-section">
+                <h4>Informações Úteis</h4>
+                <a href="#">Termos de Uso</a>
+                <a href="#">Política de Troca</a>
+                <a href="#">FAQ</a>
+                <a href="#contato">Trabalhe Conosco</a>
+            </div>
+            <div class="footer-section">
+                <h4>Redes Sociais</h4>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 PaintPro. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/5511999999999" target="_blank" class="whatsapp-float" aria-label="Fale conosco via WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="script.js"></script>
+</body>
+</html>
