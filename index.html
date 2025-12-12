@@ -1,0 +1,335 @@
+<!-- index.html -->
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Loja de Tintas — ColorHouse</title>
+  <link rel="stylesheet" href="styles.css" />
+  <meta name="description" content="Loja de tintas profissional — catálogo, calculadora de tinta, inspirações e serviços." />
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header" id="siteHeader" role="banner">
+    <div class="header-inner">
+      <a class="brand" href="#" aria-label="ColorHouse home">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='36'%3E%3Crect rx='6' width='120' height='36' fill='%23f15a24'/%3E%3Ctext x='12' y='23' font-size='16' font-family='Arial' fill='white'%3EColorHouse%3C/text%3E%3C/svg%3E" alt="Logotipo ColorHouse"/>
+      </a>
+
+      <nav class="main-nav" aria-label="Navegação principal">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="navMenu">☰</button>
+        <ul id="navMenu" class="nav-list">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#produtos">Produtos</a></li>
+          <li><a href="#inspiracao">Inspiração</a></li>
+          <li><a href="#blog">Blog</a></li>
+          <li><a href="#contato">Contato</a></li>
+          <li><a href="#sobre">Sobre Nós</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-cta">
+        <a class="btn-primary" href="#produtos">Compre Agora</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="home" class="hero">
+    <div class="hero-inner">
+      <h1>Transforme espaços com cor e qualidade</h1>
+      <p>Tintas profissionais, tecnologia de cor e consultoria especializada para cada projeto.</p>
+      <div class="hero-actions">
+        <a class="btn-ghost" href="#inspiracao">Veja Inspirações</a>
+        <a class="btn-primary" href="#produtos">Catálogo de Produtos</a>
+      </div>
+    </div>
+    <div class="hero-image" aria-hidden="true">
+      <!-- decorative -->
+    </div>
+  </section>
+
+  <main>
+    <!-- Produtos e Filtros -->
+    <section id="produtos" class="section container">
+      <div class="section-grid">
+        <!-- Sidebar Filtros -->
+        <aside class="filters" aria-label="Filtros de produtos">
+          <h2>Filtros</h2>
+
+          <div class="filter-group">
+            <h3>Tipo de Tinta</h3>
+            <label><input type="checkbox" name="type" value="Acrílica"> Acrílica</label>
+            <label><input type="checkbox" name="type" value="Látex"> Látex</label>
+            <label><input type="checkbox" name="type" value="Epóxi"> Epóxi</label>
+            <label><input type="checkbox" name="type" value="Esmalte"> Esmalte</label>
+          </div>
+
+          <div class="filter-group">
+            <h3>Acabamento</h3>
+            <label><input type="checkbox" name="finish" value="Fosco"> Fosco</label>
+            <label><input type="checkbox" name="finish" value="Semibrilho"> Semibrilho</label>
+            <label><input type="checkbox" name="finish" value="Brilhante"> Brilhante</label>
+            <label><input type="checkbox" name="finish" value="Acetinado"> Acetinado</label>
+          </div>
+
+          <div class="filter-group">
+            <h3>Uso</h3>
+            <label><input type="checkbox" name="usage" value="Interno"> Interno</label>
+            <label><input type="checkbox" name="usage" value="Externo"> Externo</label>
+            <label><input type="checkbox" name="usage" value="Madeira"> Madeira</label>
+            <label><input type="checkbox" name="usage" value="Metal"> Metal</label>
+            <label><input type="checkbox" name="usage" value="Piso"> Piso</label>
+          </div>
+
+          <div class="filter-group">
+            <h3>Marca</h3>
+            <label><input type="checkbox" name="brand" value="ColorPlus"> ColorPlus</label>
+            <label><input type="checkbox" name="brand" value="ProTintas"> ProTintas</label>
+            <label><input type="checkbox" name="brand" value="MasterCoat"> MasterCoat</label>
+          </div>
+
+          <div class="filter-actions">
+            <button id="resetFilters" class="btn-ghost">Limpar Filtros</button>
+          </div>
+        </aside>
+
+        <!-- Grid de Produtos -->
+        <section class="products" aria-live="polite">
+          <header class="products-header">
+            <h2>Catálogo de Produtos</h2>
+            <div class="search-wrap">
+              <input id="searchInput" type="search" placeholder="Buscar por nome, cor ou código" aria-label="Buscar produtos"/>
+            </div>
+          </header>
+
+          <div id="productGrid" class="product-grid" role="list">
+            <!-- JS irá popular os cards aqui -->
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <!-- Calculadora de Tinta -->
+    <section id="calculadora" class="section container card">
+      <h2>Calculadora de Tinta</h2>
+      <p>Calcule quantos litros você precisa para pintar sua parede.</p>
+      <form id="paintCalcForm" class="calc-form" onsubmit="return false;">
+        <div class="field-row">
+          <label for="width">Largura (m)</label>
+          <input id="width" type="number" min="0" step="0.01" required />
+        </div>
+        <div class="field-row">
+          <label for="height">Altura (m)</label>
+          <input id="height" type="number" min="0" step="0.01" required />
+        </div>
+        <div class="field-row">
+          <label for="coats">Número de Demãos</label>
+          <select id="coats">
+            <option value="1">1</option>
+            <option value="2" selected>2</option>
+            <option value="3">3</option>
+          </select>
+        </div>
+
+        <div class="field-row">
+          <label for="coverage">Rendimento (m² por L)</label>
+          <input id="coverage" type="number" min="1" value="10" /> <!-- usuário pode ajustar -->
+        </div>
+
+        <div class="calc-actions">
+          <button id="calcBtn" class="btn-primary">Calcular</button>
+          <button id="clearCalc" class="btn-ghost" type="button">Limpar</button>
+        </div>
+
+        <div id="calcResult" class="calc-result" aria-live="polite"></div>
+      </form>
+    </section>
+
+    <!-- Paleta de Cores / Visualizador -->
+    <section id="inspiracao" class="section container">
+      <h2>Paleta de Cores & Visualizador</h2>
+      <div class="inspo-grid">
+        <aside class="palette">
+          <h3>Tendências de Cores</h3>
+          <div class="swatches">
+            <button class="swatch" data-color="#f5f0e1" style="background:#f5f0e1" aria-label="Bege Claro"></button>
+            <button class="swatch" data-color="#f1c40f" style="background:#f1c40f" aria-label="Amarelo Mostarda"></button>
+            <button class="swatch" data-color="#2ecc71" style="background:#2ecc71" aria-label="Verde Menta"></button>
+            <button class="swatch" data-color="#3498db" style="background:#3498db" aria-label="Azul Sereno"></button>
+            <button class="swatch" data-color="#9b59b6" style="background:#9b59b6" aria-label="Roxo"></button>
+            <button class="swatch" data-color="#e74c3c" style="background:#e74c3c" aria-label="Vermelho Terracota"></button>
+          </div>
+
+          <h4>Combinações Sugeridas</h4>
+          <ul class="combos">
+            <li>Bege Claro + Azul Sereno</li>
+            <li>Mostarda + Roxo (acento)</li>
+            <li>Verde Menta + Branco Off</li>
+          </ul>
+        </aside>
+
+        <div class="visualizer">
+          <h3>Visualizador (simulado)</h3>
+          <div class="visualizer-frame" aria-hidden="false">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='360'%3E%3Crect width='640' height='360' fill='%23ddd'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-size='24' font-family='Arial' fill='%23666'%3EAmbiente de Exemplo%3C/text%3E%3C/svg%3E" alt="Imagem de um ambiente para visualização" class="viz-base"/>
+            <div id="colorOverlay" class="viz-overlay" aria-hidden="true"></div>
+          </div>
+
+          <div class="visualizer-controls">
+            <label for="colorPicker">Escolha uma cor</label>
+            <input id="colorPicker" type="color" value="#f5f0e1" />
+            <button id="applyColor" class="btn-primary">Aplicar</button>
+            <button id="resetColor" class="btn-ghost">Resetar</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog / Tutoriais -->
+    <section id="blog" class="section container">
+      <h2>Dicas e Tutoriais</h2>
+      <div class="blog-grid">
+        <article class="blog-card">
+          <h3>Guia de Aplicação: Como pintar uma parede nova</h3>
+          <p>Passo a passo desde preparação até acabamento para obter resultado profissional.</p>
+          <a class="read-more" href="#">Ler mais →</a>
+        </article>
+
+        <article class="blog-card">
+          <h3>Solução de Problemas: Como evitar bolhas na pintura</h3>
+          <p>Identifique causas comuns e como corrigi-las para um acabamento perfeito.</p>
+          <a class="read-more" href="#">Ler mais →</a>
+        </article>
+
+        <article class="blog-card">
+          <h3>Escolha do acabamento certo para cada ambiente</h3>
+          <p>Como escolher Fosco, Semibrilho, Brilhante ou Acetinado corretamente.</p>
+          <a class="read-more" href="#">Ler mais →</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- Contato e Localização -->
+    <section id="contato" class="section container card contact-section">
+      <div class="contact-grid">
+        <div class="contact-form">
+          <h2>Contato</h2>
+          <form id="contactForm" novalidate>
+            <div class="field-row">
+              <label for="nome">Nome</label>
+              <input id="nome" name="nome" required />
+            </div>
+            <div class="field-row">
+              <label for="email">E-mail</label>
+              <input id="email" name="email" type="email" required />
+            </div>
+            <div class="field-row">
+              <label for="assunto">Assunto</label>
+              <input id="assunto" name="assunto" />
+            </div>
+            <div class="field-row">
+              <label for="mensagem">Mensagem</label>
+              <textarea id="mensagem" name="mensagem" rows="6" required></textarea>
+            </div>
+            <div class="field-row">
+              <button type="submit" class="btn-primary">Enviar Mensagem</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="location">
+          <h2>Nosso Endereço</h2>
+          <p>Rua Exemplo, 123 — Centro, SuaCidade — SP</p>
+          <p><strong>Horário de Atendimento:</strong><br/>Seg — Sex: 08:00 — 18:00<br/>Sáb: 08:00 — 13:00</p>
+
+          <!-- Simulação de mapa via iframe (substitua pelo iframe real do Google Maps se tiver key) -->
+          <div class="map-frame" title="Mapa de localização">
+            <iframe src="https://www.google.com/maps?q=sao+paulo&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" aria-hidden="false"></iframe>
+          </div>
+
+          <a class="whatsapp-float" href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer" aria-label="Abrir WhatsApp">
+            <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="white" d="M12 2C6.48 2 2 6.48 2 12c0 1.75.46 3.39 1.26 4.82L2 22l5.39-1.23C8.61 21.54 10.28 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zM16.5 15.2c-.3.8-1.7 1.5-2.5 1.6-.7.1-1.4.2-3.3-.7-2-.9-3.5-3.1-3.6-3.2-.1-.1-1-1.1-1-2.1 0-1.1.5-1.7.7-2 .2-.2.6-.3.8-.3.2 0 .4 0 .6.1.2.1.6.2.9.9.3.6.8 1.9.9 2.1.1.3.1.6 0 .8-.1.2-.2.6-.4.9-.2.3-.4.5-.1.9.2.3 1.2 1.9 2.9 3 1.9 1.1 2.8 1 3.1.9.3-.1 1.1-.5 1.3-1.1.2-.6.2-1.1.1-1.2z"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sobre Nós -->
+    <section id="sobre" class="section container about">
+      <h2>Sobre Nós</h2>
+      <p><strong>Missão:</strong> Prover soluções em cor que inspirem e tenham durabilidade.</p>
+      <p><strong>Valores:</strong> Qualidade, Sustentabilidade, Atendimento Especializado.</p>
+
+      <div class="diferenciais">
+        <div class="diff">
+          <h3>Máquina de cores de alta precisão</h3>
+          <p>Match exato com amostras e garantia de uniformidade.</p>
+        </div>
+        <div class="diff">
+          <h3>Consultores especializados</h3>
+          <p>Suporte técnico para escolher rendimento, acabamento e preparação.</p>
+        </div>
+        <div class="diff">
+          <h3>Entrega rápida</h3>
+          <p>Logística otimizada para sua obra não parar.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner container">
+      <div class="footer-col">
+        <h4>ColorHouse</h4>
+        <p>Rua Exemplo, 123 — Centro</p>
+        <p>(11) 99999-9999</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Links</h4>
+        <ul>
+          <li><a href="#produtos">Produtos</a></li>
+          <li><a href="#inspiracao">Inspiração</a></li>
+          <li><a href="#blog">Blog</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Suporte</h4>
+        <ul>
+          <li><a href="#">Termos de Uso</a></li>
+          <li><a href="#">Política de Troca</a></li>
+          <li><a href="#">Garantia</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col social">
+        <h4>Redes</h4>
+        <div class="social-icons">
+          <a href="#" aria-label="Facebook">f</a>
+          <a href="#" aria-label="Instagram">ig</a>
+          <a href="#" aria-label="YouTube">yt</a>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      <small>© <span id="year"></span> ColorHouse. Todos os direitos reservados.</small>
+    </div>
+  </footer>
+
+  <!-- Product Detail Modal (simulada) -->
+  <div id="productModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-content">
+      <button id="closeModal" class="modal-close" aria-label="Fechar">&times;</button>
+      <div id="modalBody">
+        <!-- preenchido por JS -->
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
